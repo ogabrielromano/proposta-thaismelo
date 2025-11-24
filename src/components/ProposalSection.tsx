@@ -122,7 +122,10 @@ export const ProposalSection = () => {
                       className="flex items-start gap-3"
                       initial={{ opacity: 0, x: -20 }}
                       animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-                      transition={{ duration: 0.4, delay: 0.6 + index * 0.1 }}
+                      transition={{ 
+                        duration: typeof window !== 'undefined' && window.innerWidth < 768 ? 0 : 0.4, 
+                        delay: typeof window !== 'undefined' && window.innerWidth < 768 ? 0 : 0.6 + index * 0.1 
+                      }}
                     >
                       <div className="flex-shrink-0 w-6 h-6 rounded-full bg-gradient-primary flex items-center justify-center mt-1">
                         <Check className="w-4 h-4 text-background" />
