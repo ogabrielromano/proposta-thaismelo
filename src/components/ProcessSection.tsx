@@ -22,20 +22,32 @@ export const ProcessSection = ({
     triggerOnce: false,
   });
 
+  const num = parseInt(number);
+
   return (
     <section
       id={id}
       ref={ref}
       className="relative min-h-screen flex items-center justify-center overflow-hidden px-4"
       style={{
-        background: `linear-gradient(135deg, hsl(0 0% ${98 - parseInt(number) * 1}%) 0%, hsl(0 0% ${96 - parseInt(number) * 1}%) 100%)`,
+        background: `linear-gradient(135deg, hsl(220 28% ${7 + num}%) 0%, hsl(220 30% ${5 + num}%) 100%)`,
       }}
     >
+      {/* Subtle orange grid overlay */}
+      <div
+        className="absolute inset-0 opacity-[0.025]"
+        style={{
+          backgroundImage:
+            "linear-gradient(hsl(25 100% 53% / 0.8) 1px, transparent 1px), linear-gradient(90deg, hsl(25 100% 53% / 0.8) 1px, transparent 1px)",
+          backgroundSize: "60px 60px",
+        }}
+      />
+
       {/* Background decoration */}
       <motion.div
         className="absolute inset-0 opacity-10"
         initial={{ opacity: 0 }}
-        animate={inView ? { opacity: 0.1 } : { opacity: 0 }}
+        animate={inView ? { opacity: 0.07 } : { opacity: 0 }}
         transition={{ duration: 1 }}
       >
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
@@ -44,7 +56,7 @@ export const ProcessSection = ({
             animate={inView ? { scale: 1, rotate: 360 } : { scale: 0, rotate: 0 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
           >
-            <Icon className="w-64 h-64 md:w-96 md:h-96 text-primary/10" strokeWidth={0.5} />
+            <Icon className="w-64 h-64 md:w-96 md:h-96 text-primary" strokeWidth={0.5} />
           </motion.div>
         </div>
       </motion.div>
